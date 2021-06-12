@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PackageIcon>IconGroup137.png</PackageIcon>
+    <ApplicationIcon>IconGroup137.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="IconGroup137.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RtfPipe" Version="1.0.7388.1242" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HtmlToRtfX\HtmlToRtfX.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="IconGroup137.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
