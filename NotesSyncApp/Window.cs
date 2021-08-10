@@ -15,16 +15,12 @@ namespace NotesSyncApp
 {
     public partial class MainWindow : Form
     {
-
         //-------- Window Communication Setup -----------//
-
-
         [DllImport("user32", EntryPoint = "FindWindowExA")]
         private static extern int FindWindowEx(int hWnd1, int hWnd2, string lpsz1, string lpsz2);
 
         [DllImport("user32", EntryPoint = "SendMessageA")]
         private static extern int ZSendMessage(int Hwnd, int wMsg, int wParam, long lParam);
-
 
         // The Stickies API is accessed by sending text strings to the main Stickies window. 
         // The Windows message which is used is WM_COPYDATA which is available from Windows 95 onwards, 
@@ -74,7 +70,6 @@ namespace NotesSyncApp
             //Use to read registered hotkey pressed
             if (m.Msg == WM_HOTKEY)
                 handleHotKey((int)m.WParam);
-
 
             //Used to read messages from stickies
             switch (m.Msg)
@@ -148,8 +143,6 @@ namespace NotesSyncApp
         }
 
 
-
-
         //-------- HotKey Setup -----------//
 
         [DllImport("user32.dll")]
@@ -171,7 +164,6 @@ namespace NotesSyncApp
             string title;
             string desiredLocation;
 
-
             try
             {
                 //Find title of note by note ID
@@ -192,7 +184,6 @@ namespace NotesSyncApp
                     Log(LoggingLevel.Low, "Could not find note with ID " + noteId);
 
                 }
-
 
                 return;
             }
@@ -274,11 +265,7 @@ namespace NotesSyncApp
         }
 
 
-
-
-
         //-------- Logging Setup -----------//
-
 
         private LoggingLevel loggingSetting = LoggingLevel.Info;
 
@@ -494,7 +481,6 @@ namespace NotesSyncApp
         {
 
 
-
             String reply = SendToStickiesWithLog("get desktop " + note.Id + " title");
             string title = reply.Substring(4);
             Log(LoggingLevel.Info, "Note " + note.Id + " has title: " + title);
@@ -637,11 +623,8 @@ namespace NotesSyncApp
 
                     }
 
-
                 }
-
                 await Task.Delay(waitDelay);
-
             }
         }
 
@@ -736,11 +719,8 @@ namespace NotesSyncApp
 
             for (int i = 1; i <= notesOnXCount; i++)
             {
-
-
                 try
                 {
-
                     //Get note properties
 
                     string query = "SELECT notesInfo" + i + " FROM xMainData WHERE User = '" + user + "'";
@@ -789,7 +769,6 @@ namespace NotesSyncApp
 
 
                     notesOnX.Add(note);
-
 
 
 
@@ -1125,32 +1104,7 @@ namespace NotesSyncApp
         }
         private void RtfTest()
         {
-            string html = "<div style='font-size:12pt;font-family:Verdana;'>Line 1<p style='color:#FFF000;font-size:10pt;margin:0;'><strong><u>__________Line 2_______________</u></strong></p><p>Line3</p><p>Line4</p></div>"
-                ;
-
-            html = "<p style='color:#FFFFFF;font-size:10pt;background:#FFFFFF;margin:0;'><br></p><ul style='color:#F11111;font-size:10pt;background:#FFFFFF;margin:0 0 0 20px;padding-left:0;'><li>Fix Up <em>To Do</em></li></ul><ul style='color:#FFF111;font-size:10pt;background:#FFFFFF;margin:0 0 0 20px;padding-left:0;'><li>Fix Up <em>To Do</em></li><li>44</li></ul><p>Line 3</p>";
-            Note note = notesLocal.Find(x => x.Id == 1);
-
-            html = "<p>Line Before</p><ul style='font-size:10pt;background:#FFFFFF;color:#FF0000;margin:0 0 0 20px;padding-left:0;'><li>Buy <a style='text-decoration:none;color:#FF0000;' href='https://www.homehardware.ca/en/charcoal-range-hood-filter-for-model-rl-and-sm/p/3855233'>https://www.homehardware.ca/en/charcoal-range-hood-filter-for-model-rl-and-sm/p/3855233</a></li></ul><p>Line After</p>";
-            //html = note.Rtf;
-
-            html = "<p style='background:#FF1111;font-size:10pt;color:#00FFFF;font-family:Verdana, sans-serif;margin:0;'>- Repair screw hole in tire (Make appointment or DIY)</p>";
-
-            html = "<ul style='color:#FFFFFF;font-size:10pt;background:#FFFFFF;font-family:&quot;Segoe Print&quot;;margin:0 0 0 20px;padding-left:0;'><li>Fix Up <em>To Do</em></li></ul><p style='color:#FFFFFF;font-size:10pt;background:#FFFFFF;margin:0;'><br></p><p style='color:#FFFFFF;font-size:10pt;background:#FFFFFF;margin:0;'> &nbsp;</p><ul style='color:#FFFFFF;font-size:10pt;background:#FFFFFF;font-family:&quot;Arial Black&quot;;margin:0 0 0 20px;padding-left:0;'><li>Jill (no new)</li><li style='font-family:Verdana;'>10</li>";
-
-            html = @"<p style='color:#FFFFFF;font-size:10pt;background:#FFFFFF;margin:0;'>\</p>";
-
-            html = "	<p><br></p>" +
-                "<p></p>" +
-                "<p>Hello</p>" +
-                "<p>Bye</p>";
-
-
-            html = @"<ul style='color:#FFFFFF;font-size:10pt;margin:0 0 0 20px;padding-left:0;'><li>One</li>";
-
-
-            html = @"<ul style='color:#ffffff; font-size:10pt; margin:0 0 0 20px; padding-left:0'><li>One</li><li>Two</li><li>&nbsp;&nbsp;Three</li></ul>";
-
+            string html = "html goes here";
 
             var rtfConverter = new RtfConverter();
             var rtf = rtfConverter.Convert(html);

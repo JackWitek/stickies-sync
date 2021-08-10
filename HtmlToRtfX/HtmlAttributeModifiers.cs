@@ -19,9 +19,6 @@ namespace X.HtmlToRtfConverter
         private const string FontFamily = "font-family";
 
         // All others are ignored (uncomment line throw new NotSupportedException() to get failure)
-
-
-
         private static readonly Dictionary<string, Action<RtfDocumentBuilder, string>> AttributeModifiers = new Dictionary<string, Action<RtfDocumentBuilder, string>>
         {
             { Color, (builder, value) => builder.ForegroundColor(value) },
